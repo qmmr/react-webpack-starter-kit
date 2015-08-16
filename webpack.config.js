@@ -27,7 +27,7 @@ var config = {
 		publicPath: '/build'
 	},
 	resolve: {
-		extensions: [ '.js', '.jsx' ]
+		extensions: [ '', '.js', '.jsx' ]
 	},
 	module: {
 		loaders: [
