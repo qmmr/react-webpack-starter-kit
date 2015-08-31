@@ -3,9 +3,10 @@ var path = require('path')
 var autoprefixer = require('autoprefixer-core')
 var csswring = require('csswring')
 
-var nodeModulesPath = path.resolve(__dirname, 'node_modules')
 var buildPath = path.resolve(__dirname, 'build')
 var mainPath = path.resolve(__dirname, 'src', 'index.js')
+var nodeModulesPath = path.resolve(__dirname, 'node_modules')
+var srcPath = path.resolve(__dirname, 'src')
 
 var config = {
 	devtool: 'eval-cheap-module-source-map',
@@ -27,7 +28,9 @@ var config = {
 		publicPath: 'http://localhost:8080/build/'
 	},
 	resolve: {
-		extensions: [ '', '.js', '.jsx' ]
+		root: srcPath,
+		extensions: [ '', '.js', '.jsx' ],
+		modulesDirectories: [ 'node_modules' ]
 	},
 	module: {
 		loaders: [

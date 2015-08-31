@@ -2,7 +2,8 @@
   "parser": "babel-eslint",
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "es6": true
   },
   "plugins": [
     "react"
@@ -51,7 +52,6 @@
     "react/no-multi-comp": 1,
     "react/no-unknown-property": 1,
     "react/prop-types": 1,
-    "react/react-in-jsx-scope": 1,
     "react/self-closing-comp": 1,
     "react/wrap-multilines": 1,
     "semi": [2, "never"],
