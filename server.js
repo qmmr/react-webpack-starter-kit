@@ -1,24 +1,26 @@
 var express = require('express')
 var path = require('path')
+var cors = require('cors')
 var httpProxy = require('http-proxy')
 
 var proxy = httpProxy.createProxyServer()
 var app = express()
 
 var isProduction = process.env.NODE_ENV === 'production'
-var port = isProduction ? 8080 : 3000
+var port = isProduction ? 8081 : 3000
 var publicPath = path.resolve(__dirname, 'public')
 
 var bundle
 
 app.use(express.static(publicPath))
+app.use(cors())
 
 // this is run ONLY in development
 if (!isProduction) {
 	console.log('DEVELOPMENT...')
 	bundle = require('./server/bundler')()
 
-	app.all('/build/*', function(req, res) {
+	app.all('*', function(req, res) {
 		proxy.web(req, res, { target: 'http://localhost:8080' })
 	})
 }

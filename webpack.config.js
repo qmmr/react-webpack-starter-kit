@@ -4,11 +4,11 @@ var autoprefixer = require('autoprefixer-core')
 var csswring = require('csswring')
 
 var nodeModulesPath = path.resolve(__dirname, 'node_modules')
-var buildPath = path.resolve(__dirname, 'public', 'build')
+var buildPath = path.resolve(__dirname, 'build')
 var mainPath = path.resolve(__dirname, 'src', 'index.js')
 
 var config = {
-	devtool: 'eval-source-map',
+	devtool: 'eval-cheap-module-source-map',
 	entry: [
 		'webpack-dev-server/client?http://localhost:8080', // WebpackDevServer host and port
 		'webpack/hot/only-dev-server',
@@ -24,7 +24,7 @@ var config = {
 		filename: 'bundle.js',
 		// Everything related to Webpack should go through a build path,
 		// localhost:3000/build. That makes proxying easier to handle
-		publicPath: '/build'
+		publicPath: 'http://localhost:8080/build/'
 	},
 	resolve: {
 		extensions: [ '', '.js', '.jsx' ]
