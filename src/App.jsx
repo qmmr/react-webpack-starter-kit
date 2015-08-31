@@ -10,7 +10,7 @@ export default class App extends Component {
 	static displayName = 'App'
 
 	render() {
-		return <h1>DX above all! Fuck me!</h1>
+		return <h1>Hello, welcome to my react-webpack-starter-kit</h1>
 	}
 
 }

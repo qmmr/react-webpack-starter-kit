@@ -8,7 +8,7 @@ var mainPath = path.resolve(__dirname, 'src', 'index.js')
 var nodeModulesPath = path.resolve(__dirname, 'node_modules')
 var srcPath = path.resolve(__dirname, 'src')
 
-var config = {
+module.exports = {
 	devtool: 'eval-cheap-module-source-map',
 	entry: [
 		'webpack-dev-server/client?http://localhost:8080', // WebpackDevServer host and port
@@ -18,9 +18,8 @@ var config = {
 	output: {
 		// We need to give Webpack a path. It does not actually need it,
 		// because files are kept in memory in webpack-dev-server, but an
-		// error will occur if nothing is specified. We use the buildPath
-		// as that points to where the files will eventually be bundled
-		// in production
+		// error will occur if nothing is specified.
+		// We use the buildPath as that points to where the files will eventually be bundled in production
 		path: buildPath,
 		filename: 'bundle.js',
 		// Everything related to Webpack should go through a build path,
@@ -53,5 +52,3 @@ var config = {
 		]
 	}
 }
-
-module.exports = config

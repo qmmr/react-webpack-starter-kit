@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node index.js",
+    "build": "node_modules/.bin/webpack --progress --profile --colors",
     "watch": "node_modules/.bin/webpack-dev-server --hot --inline --progress --colors",
     "test": "node_modules/.bin/tape test/**/*.js | node_modules/.bin/faucet"
   },

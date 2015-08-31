@@ -25,10 +25,10 @@ if (!isProduction) {
 
 // it is important to catch all errors from the proxy or the server will crash
 // An example: connecting to server when webpack is bundling
-proxy.on('error', function(e) {
-	console.log('Could not connect to proxy, error: ', e)
+proxy.on('error', function(err) {
+	console.log(`Could not connect to proxy, error: ${ err }`)
 })
 
 app.listen(PORT, function() {
-	console.log('Server is listening on port:' + PORT)
+	console.log(`Server is listening on port: ${ PORT }`)
 })
