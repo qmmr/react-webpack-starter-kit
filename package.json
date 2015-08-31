@@ -4,7 +4,7 @@
   "description": "react-webpack-starter-kit",
   "main": "src/index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node index.js",
     "watch": "node_modules/.bin/webpack-dev-server --hot --inline --progress --colors",
     "test": "node_modules/.bin/tape test/**/*.js | node_modules/.bin/faucet"
   },

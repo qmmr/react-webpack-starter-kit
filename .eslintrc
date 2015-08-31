@@ -33,6 +33,9 @@
     "unicodeCodePointEscapes": true
   },
   "rules": {
+    "space-before-function-paren": [2, { "anonymous": "never", "named": "never" }],
+    "func-style": [2, "expression"],
+    "no-spaced-func": [2],
     "curly": [2,"multi-line"],
     "eol-last": 2,
     "no-irregular-whitespace": 2,
