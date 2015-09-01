@@ -1,4 +1,4 @@
 import React from 'react'
-import App from 'App.jsx'
+import App from 'App'
 
 React.render(<App />, document.querySelector('#app'))

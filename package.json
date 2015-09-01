@@ -1,6 +1,6 @@
 {
   "name": "react-webpack-starter-kit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "react-webpack-starter-kit",
   "main": "src/index.js",
   "scripts": {
@@ -21,6 +21,7 @@
     "webpack-dev-server": "~1.10.1"
   },
   "dependencies": {
+    "alt": "~0.17.1",
     "autoprefixer-core": "~5.2.1",
     "css-loader": "~0.16.0",
     "csswring": "~3.0.5",
