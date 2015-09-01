@@ -41,6 +41,8 @@
     "no-irregular-whitespace": 2,
     "no-mixed-requires": 2,
     "no-multi-spaces": 2,
+    "no-undef": 2,
+    "no-unused-vars": [2, { "vars": "all", "args": "all" }],
     "no-underscore-dangle": 0,
     "quotes": [2, "single"],
     "react/display-name": 1,
