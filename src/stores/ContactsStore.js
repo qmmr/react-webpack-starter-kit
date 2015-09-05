@@ -1,6 +1,5 @@
-import { createStore, bind, expose } from 'alt/utils/decorators'
-
 import alter from 'alter'
+import { createStore, bind, expose } from 'alt/utils/decorators'
 
 @createStore(alter)
 class ContactsStore {

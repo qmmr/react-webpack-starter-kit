@@ -1,6 +1,6 @@
 {
   "name": "react-webpack-starter-kit",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "react-webpack-starter-kit",
   "main": "src/index.js",
   "scripts": {
@@ -27,6 +27,7 @@
     "csswring": "^4.0.0",
     "expose-loader": "~0.7.0",
     "express": "~4.13.3",
+    "html-webpack-plugin": "^1.6.1",
     "http-proxy": "~1.11.2",
     "json-loader": "~0.5.2",
     "postcss-loader": "^0.6.0",

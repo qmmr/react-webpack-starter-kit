@@ -1,4 +1,5 @@
 var webpack = require('webpack')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 var path = require('path')
 var autoprefixer = require('autoprefixer-core')
 var csswring = require('csswring')
@@ -9,6 +10,9 @@ var nodeModulesPath = path.resolve(__dirname, 'node_modules')
 var srcPath = path.resolve(__dirname, 'src')
 
 module.exports = {
+	target: 'web',
+	cache: true,
+	debug: true,
 	devtool: 'eval-cheap-module-source-map',
 	entry: [
 		'webpack-dev-server/client?http://localhost:8080', // WebpackDevServer host and port
@@ -35,7 +39,7 @@ module.exports = {
 		loaders: [
 			{ test: require.resolve('react'), loader: 'expose?React' }, // expose React as global
 			{ test: /\.js$/, loader: 'babel', exclude: [ nodeModulesPath ] },
-			{ test: /\.jsx$/, loaders: [ 'react-hot', 'babel' ], include: path.join(__dirname, 'src') },
+			{ test: /\.jsx$/, loaders: [ 'react-hot', 'babel' ], include: srcPath },
 			{ test: /\.html$/, loader: 'raw', exclude: /node_modules/ },
 			{ test: /\.css$/, loader: 'style!css!postcss', exclude: /node_modules/ },
 			{ test: /\.json$/, loader: 'json' }
@@ -43,7 +47,8 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoErrorsPlugin()
+		new webpack.NoErrorsPlugin(),
+		new HtmlWebpackPlugin({ inject: true, template: 'src/index.html' })
 	],
 	postcss: function() {
 		return [

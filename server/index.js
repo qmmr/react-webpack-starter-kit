@@ -19,7 +19,7 @@ if (!isProduction) {
 	bundler()
 
 	app.all('*', function(req, res) {
-		proxy.web(req, res, { target: 'http://localhost:8080' })
+		proxy.web(req, res, { target: 'http://localhost:8080/build' })
 	})
 }
 
