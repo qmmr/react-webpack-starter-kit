@@ -2,24 +2,35 @@ import express from 'express'
 import path from 'path'
 import cors from 'cors'
 import httpProxy from 'http-proxy'
-import { bundler } from './bundler'
+
+import webpackDevServer from '../webpack/server'
 
 const proxy = httpProxy.createProxyServer()
+
+const publicPath = path.resolve(__dirname, '../public')
+
 const app = express()
-const publicPath = path.resolve(__dirname, '..', 'public')
-const isProduction = process.env.NODE_ENV === 'production'
-const PORT = isProduction ? 8081 : 3000
+
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
+
+app.set('env', process.env.NODE_ENV || 'development')
+app.set('host', process.env.HOST || 'localhost')
+app.set('port', process.env.PORT || 3000)
 
 app.use(express.static(publicPath))
 app.use(cors())
 
-// this is run ONLY in development
-if (!isProduction) {
-	console.log('\nRemember about DX...\n')
-	bundler()
+if (process.env.NODE_ENV === 'production') {
+	app.get('/', function(req, res) {
+		res.render('index', { title: 'react-webpack-starter-kit' })
+	})
+} else { // this runs ONLY in development
+	webpackDevServer()
 
-	app.all('*', function(req, res) {
-		proxy.web(req, res, { target: 'http://localhost:8080' })
+	app.all('*', function(req, res, next) {
+		res.render('index', { title: 'react-webpack-starter-kit' })
+		next()
 	})
 }
 
@@ -29,6 +40,6 @@ proxy.on('error', function(err) {
 	console.log(`Could not connect to proxy, error: ${ err }`)
 })
 
-app.listen(PORT, function() {
-	console.log(`Server is listening on port: ${ PORT }`)
+app.listen(app.get('port'), function() {
+	console.log(`Server is listening on http://${ app.get('host')}:${ app.get('port') }`)
 })

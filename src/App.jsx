@@ -1,9 +1,4 @@
-import { Component } from 'react'
-
-// css
-import 'css/normalize.css'
-import 'css/foundation.min.css'
-import 'css/style.css'
+import React, { Component } from 'react'
 
 export default class App extends Component {
 

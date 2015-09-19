@@ -1,14 +1,14 @@
-var webpack = require('webpack')
-var path = require('path')
-var autoprefixer = require('autoprefixer-core')
-var csswring = require('csswring')
+import webpack from 'webpack'
+import path from 'path'
+import autoprefixer from 'autoprefixer-core'
+import csswring from 'csswring'
 
-var buildPath = path.resolve(__dirname, 'build')
-var mainPath = path.resolve(__dirname, 'src', 'index.js')
-var nodeModulesPath = path.resolve(__dirname, 'node_modules')
-var srcPath = path.resolve(__dirname, 'src')
+const buildPath = path.resolve(__dirname, '../build')
+const mainPath = path.resolve(__dirname, '../src/index.js')
+const nodeModulesPath = path.resolve(__dirname, '../node_modules')
+const srcPath = path.resolve(__dirname, '../src')
 
-module.exports = {
+export const config = {
 	devtool: 'eval-cheap-module-source-map',
 	entry: [
 		'webpack-dev-server/client?http://localhost:8080', // WebpackDevServer host and port
@@ -33,9 +33,8 @@ module.exports = {
 	},
 	module: {
 		loaders: [
-			{ test: require.resolve('react'), loader: 'expose?React' }, // expose React as global
-			{ test: /\.js$/, loader: 'babel', exclude: [ nodeModulesPath ] },
-			{ test: /\.jsx$/, loaders: [ 'react-hot', 'babel' ], include: path.join(__dirname, 'src') },
+			{ test: /\.js$/, loader: 'babel?optional[]=runtime', exclude: [ nodeModulesPath ] },
+			{ test: /\.jsx$/, loaders: [ 'react-hot', 'babel' ], include: srcPath },
 			{ test: /\.html$/, loader: 'raw', exclude: /node_modules/ },
 			{ test: /\.css$/, loader: 'style!css!postcss', exclude: /node_modules/ },
 			{ test: /\.json$/, loader: 'json' }
@@ -45,7 +44,7 @@ module.exports = {
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoErrorsPlugin()
 	],
-	postcss: function() {
+	postcss() {
 		return [
 			autoprefixer({ browsers: [ 'last 2 version' ] }),
 			csswring
