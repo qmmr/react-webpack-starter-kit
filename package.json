@@ -37,6 +37,7 @@
     "express": "4.x",
     "http-proxy": "~1.11.2",
     "json-loader": "0.x",
+    "node-noop": "0.0.1",
     "postcss-loader": "0.x",
     "react": "0.13.3",
     "style-loader": "0.x"

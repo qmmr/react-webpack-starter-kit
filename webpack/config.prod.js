@@ -21,8 +21,9 @@ module.exports = {
 	},
 	module: {
 		loaders: [
-			{ test: /\.js$/, loader: 'babel?optional[]=runtime', exclude: [ nodeModulesPath ] },
-			{ test: /\.jsx$/, loaders: [ 'react-hot', 'babel' ], include: srcPath }
+			{ test: /\.js$/, loader: 'babel?optional[]=runtime', exclude: /node_modules/ },
+			{ test: /\.jsx$/, loaders: [ 'react-hot', 'babel' ], include: srcPath },
+			{ test: /\.css$/, loader: 'style!css!postcss' }
 		]
 	},
 	plugins: [
@@ -40,6 +41,7 @@ module.exports = {
 			compressor: {
 				warnings: false
 			}
-		})
+		}),
+		new webpack.NormalModuleReplacementPlugin(/\.css$/, 'node-noop')
 	]
 }

@@ -1,4 +1,4 @@
-require('babel-core/register')
+// require('babel-core/register')
 
 // include the tests here
-require('./App.test')
+require('App.test.js')

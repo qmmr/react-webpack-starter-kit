@@ -5,7 +5,6 @@ import csswring from 'csswring'
 
 const buildPath = path.resolve(__dirname, '../build')
 const mainPath = path.resolve(__dirname, '../src/index.js')
-const nodeModulesPath = path.resolve(__dirname, '../node_modules')
 const srcPath = path.resolve(__dirname, '../src')
 
 export const config = {
@@ -33,7 +32,7 @@ export const config = {
 	},
 	module: {
 		loaders: [
-			{ test: /\.js$/, loader: 'babel?optional[]=runtime', exclude: [ nodeModulesPath ] },
+			{ test: /\.js$/, loader: 'babel?optional[]=runtime', exclude: /node_modules/ },
 			{ test: /\.jsx$/, loaders: [ 'react-hot', 'babel' ], include: srcPath },
 			{ test: /\.html$/, loader: 'raw', exclude: /node_modules/ },
 			{ test: /\.css$/, loader: 'style!css!postcss', exclude: /node_modules/ },
