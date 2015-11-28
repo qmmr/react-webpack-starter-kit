@@ -1,5 +1,5 @@
 {
-  "stage": 0,
-  "optional": [ 'es7.classProperties' ],
-  "ignore": []
+  presets: [ "es2015", "stage-1", "react" ],
+  plugins: [ "transform-react-jsx" ],
+  ignore: []
 }

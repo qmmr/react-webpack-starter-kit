@@ -1,23 +1,30 @@
-import test from 'tape'
 import React from 'react'
-// import sd from 'skin-deep'
+import expect from 'expect'
+import TestUtils from 'react-addons-test-utils'
 import App from '../src/App.jsx'
 
-test('Given the App', function(t) {
-	// const tree = sd.shallowRender(React.createElement(App))
-	// const vdom = tree.getRenderOutput()
+const setup = () => {
+	const renderer = TestUtils.createRenderer()
+	renderer.render(<App />)
+	const output = renderer.getRenderOutput()
 
-	// console.log(vdom);
-	// console.log(tree.getMountedInstance());
-	// console.log(tree.textIn('h1'));
+	return { output, renderer }
+}
 
-	// expected
-	const NODE_TYPE = 'h1'
-	const EXPECTED_MESSAGE = 'Hello, welcome to my react-webpack-starter-kit'
+describe('Given the App', () => {
+	it('should render correctly the header element', () => {
+		const { output } = setup()
+		const EXPECTED_H1_TEXT = 'Hello world!'
+		const EXPECTED_H2_TEXT = 'Build with React v0.14.3'
 
-	t.is(1, 1, 'fair enough...')
-	// t.is(tree.text(), EXPECTED_MESSAGE, 'should be expected message')
-	// t.is(vdom.type, NODE_TYPE, 'should be expected NODE_TYPE')
+		expect(output.type).toBe('header')
 
-	t.end()
+		const [ h1, h2 ] = output.props.children
+
+		expect(h1.type).toBe('h1')
+		expect(h2.type).toBe('h2')
+
+		expect(h1.props.children).toBe(EXPECTED_H1_TEXT)
+		expect(h2.props.children.join('')).toBe(EXPECTED_H2_TEXT)
+	})
 })

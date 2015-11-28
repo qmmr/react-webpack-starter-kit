@@ -1,6 +1,6 @@
 import webpack from 'webpack'
 import path from 'path'
-import autoprefixer from 'autoprefixer-core'
+import autoprefixer from 'autoprefixer'
 import csswring from 'csswring'
 
 const buildPath = path.resolve(__dirname, '../build')
@@ -32,8 +32,8 @@ export const config = {
 	},
 	module: {
 		loaders: [
-			{ test: /\.js$/, loader: 'babel?optional[]=runtime', exclude: /node_modules/ },
-			{ test: /\.jsx$/, loaders: [ 'react-hot', 'babel' ], include: srcPath },
+			{ test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+			{ test: /\.jsx$/, loaders: [ 'react-hot', 'babel-loader' ], include: srcPath },
 			{ test: /\.html$/, loader: 'raw', exclude: /node_modules/ },
 			{ test: /\.css$/, loader: 'style!css!postcss', exclude: /node_modules/ },
 			{ test: /\.json$/, loader: 'json' }
