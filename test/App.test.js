@@ -15,7 +15,7 @@ describe('Given the App', () => {
 	it('should render correctly the header element', () => {
 		const { output } = setup()
 		const EXPECTED_H1_TEXT = 'Hello world!'
-		const EXPECTED_H2_TEXT = 'Build with React v0.14.3'
+		const EXPECTED_H2_TEXT = 'Build with React v0.14.7'
 
 		expect(output.type).toBe('header')
 

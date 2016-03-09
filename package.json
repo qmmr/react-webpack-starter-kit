@@ -7,13 +7,17 @@
     "start": "nodemon index.js",
     "test": "mocha --compilers js:babel-register --recursive",
     "test:watch": "npm test -- -R nyan --watch",
+    "lint": "npm run lint:src && npm run lint:test",
+    "lint:src": "eslint src/**/*.js",
+    "lint:test": "eslint test/**/*.js",
     "build": "NODE_ENV=production webpack -p --config webpack/config.prod.js",
     "clean": "rm -rf public/build/",
     "postinstall": "npm run build"
   },
   "devDependencies": {
+    "babel-eslint": "5.0.0",
     "eslint": "2.3.0",
-    "eslint-config-qmmr": "2.0.0",
+    "eslint-config-qmmr": "2.0.1",
     "eslint-plugin-react": "4.2.1",
     "expect": "^1.13.0",
     "mocha": "^2.3.4"
@@ -35,7 +39,7 @@
     "express": "^4.13.3",
     "http-proxy": "^1.12.0",
     "json-loader": "^0.5.4",
-    "node-libs-browser": "^0.5.3",
+    "node-libs-browser": "1.0.0",
     "nodemon": "1.9.1",
     "postcss-loader": "^0.8.0",
     "react": "^0.14.3",
