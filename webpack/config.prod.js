@@ -4,7 +4,6 @@ var path = require('path')
 
 var buildPath = path.resolve(__dirname, '../public/build')
 var mainPath = path.resolve(__dirname, '../src/index.js')
-var nodeModulesPath = path.resolve(__dirname, '../node_modules')
 var srcPath = path.resolve(__dirname, '../src')
 /* eslint-enable */
 
@@ -17,11 +16,11 @@ module.exports = {
 	resolve: {
 		root: srcPath,
 		extensions: [ '', '.js', '.jsx' ],
-		modulesDirectories: [ nodeModulesPath ]
+		modulesDirectories: [ 'node_modules' ]
 	},
 	module: {
 		loaders: [
-			{ test: /\.js$/, loader: 'babel?optional[]=runtime', exclude: /node_modules/ },
+			{ test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
 			{ test: /\.jsx$/, loaders: [ 'react-hot', 'babel' ], include: srcPath },
 			{ test: /\.css$/, loader: 'style!css!postcss' }
 		]

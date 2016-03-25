@@ -3,11 +3,11 @@ import path from 'path'
 import autoprefixer from 'autoprefixer'
 import csswring from 'csswring'
 
-const buildPath = path.resolve(__dirname, '../build')
+const buildPath = path.resolve(__dirname, '../public/build')
 const mainPath = path.resolve(__dirname, '../src/index.js')
 const srcPath = path.resolve(__dirname, '../src')
 
-export const config = {
+const config = {
 	devtool: 'eval-cheap-module-source-map',
 	entry: [
 		'webpack-dev-server/client?http://localhost:8080', // WebpackDevServer host and port
@@ -50,3 +50,5 @@ export const config = {
 		]
 	}
 }
+
+export default config

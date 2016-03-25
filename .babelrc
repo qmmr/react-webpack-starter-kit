@@ -1,5 +1,3 @@
 {
-  presets: [ "es2015", "stage-1", "react" ],
-  plugins: [ "transform-react-jsx" ],
-  ignore: []
+  presets: [ "es2015", "stage-1", "react" ]
 }
