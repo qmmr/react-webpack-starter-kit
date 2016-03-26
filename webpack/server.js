@@ -1,7 +1,7 @@
 import webpack from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
 // import ProgressPlugin from 'webpack/lib/ProgressPlugin'
-import { config } from './config.dev'
+import config from './config.dev.babel'
 
 const HOST = process.env.HOST || 'localhost'
 const PORT = 8080

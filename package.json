@@ -10,30 +10,31 @@
     "lint": "npm run lint:src && npm run lint:test",
     "lint:src": "eslint src/**/*.js",
     "lint:test": "eslint test/**/*.js",
+    "build": "better-npm-run build:prod",
     "build:dev": "better-npm-run build:dev",
     "build:prod": "better-npm-run build:prod",
     "clean": "rm -rf public/build/",
     "postinstall": "npm run build"
   },
   "betterScripts": {
-      "build:dev": {
-        "command": "webpack --config webpack/config.dev.babel.js --progress --color",
-        "env": {
-            "NODE_ENV": "development"
-        }
-      },
-      "build:prod": {
-        "command": "webpack -p --config webpack/config.prod.js",
-        "env": {
-            "NODE_ENV": "production"
-        }
-      },
-      "test:watch": {
-          "command": "",
-          "env": {
-              "NODE_ENV": "development"
-          }
+    "build:dev": {
+      "command": "webpack --config webpack/config.dev.babel.js --progress --color",
+      "env": {
+        "NODE_ENV": "development"
       }
+    },
+    "build:prod": {
+      "command": "webpack -p --config webpack/config.prod.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "test:watch": {
+      "command": "",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
   },
   "devDependencies": {
     "babel-eslint": "5.0.0",
@@ -45,7 +46,9 @@
     "eslint-config-qmmr": "2.0.2",
     "eslint-plugin-react": "4.2.3",
     "expect": "1.15.2",
-    "mocha": "2.4.5"
+    "mocha": "2.4.5",
+    "node-sass": "3.4.2",
+    "sass-loader": "3.2.0"
   },
   "dependencies": {
     "autoprefixer": "6.3.3",

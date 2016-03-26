@@ -36,6 +36,7 @@ const config = {
 			{ test: /\.jsx$/, loaders: [ 'react-hot', 'babel-loader' ], include: srcPath },
 			{ test: /\.html$/, loader: 'raw', exclude: /node_modules/ },
 			{ test: /\.css$/, loader: 'style!css!postcss', exclude: /node_modules/ },
+			{ test: /\.scss$/, loader: 'style!css!postcss!sass', exclude: /node_modules/ },
 			{ test: /\.json$/, loader: 'json' }
 		]
 	},
