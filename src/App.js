@@ -5,43 +5,30 @@ const Links = () =>
 	<nav>
 		<Link activeClassName='active' to='/'>Home</Link>
 		<Link activeClassName='active' to='/about'>About</Link>
-		<Link activeClassName='active' to='/me'>me</Link>
-		<Link activeClassName='active' to='/me/name'>Me name</Link>
-		<Link activeClassName='active' to='/me/name/Marcin'>Me name is Marcin</Link>
-		<Link activeClassName='active' to='/contact'>Contact</Link>
-		<Link activeClassName='active' to='/query'>Query: default</Link>
-		<Link activeClassName='active' to={{ pathname: 'query', query: { query: 'Yo dude!' } }}>Query: "Yo dude!"</Link>
 	</nav>
 
-const About = (props) => <div><Links /><h1>About</h1>{ props.children }</div>
-
-const MeWrapper = (props) =>
-	<div>
-		<Links />
-		<h1>MeWrapper</h1>
-		{ props.children }
-	</div>
-const Me = (props) => <div><h1>Me</h1>{ props.children }</div>
-const MeName = (props) =>
-	<div>
-		<h1>MeName is { props.params.name || 'anonymous' }</h1>
-	</div>
-
-const Contact = () => <div><Links /><h1>Contact</h1></div>
-const CompositeContainer = (props) =>
+const Container = props =>
 	<div>
 		<Links />
 		{ props.header }
 		{ props.body }
+		{ props.children }
 	</div>
 
-const CompositeHeader = () => <div><h1>CompositeHeader</h1></div>
-const CompositeBody = () => <div><p>CompositeBody</p></div>
-
-const Query = (props) =>
+const Header = () => <div><h1>repack-starter-kit</h1></div>
+const Body = () =>
 	<div>
-		<Links />
-		<p>Query param is { props.location.query.query || 'default' }</p>
+		<p>React + webpack along with:</p>
+		<ul>
+			<li>React-router</li>
+			<li>Babel</li>
+			<li>Redux (soon)</li>
+		</ul>
+	</div>
+
+const About = () =>
+	<div>
+		<p>My name is Marcin and this is my personal starter-kit for building web apps with React.js and webpack</p>
 	</div>
 
 export default class App extends Component {
@@ -53,16 +40,10 @@ export default class App extends Component {
 	render() {
 		return (
 			<Router history={ browserHistory }>
-				<Route path='/' component={ CompositeContainer }>
-					<IndexRoute components={{ header: CompositeHeader, body: CompositeBody }}></IndexRoute>
+				<Route path='/' component={ Container }>
+					<IndexRoute components={ { header: Header, body: Body } } />
+					<Route path='about' component={ About } />
 				</Route>
-				<Route path='/me' component={ MeWrapper }>
-					<IndexRoute component={ Me }></IndexRoute>
-					<Route path='name(/:name)' component={ MeName }></Route>
-				</Route>
-				<Route path='about' component={ About }></Route>
-				<Route path='/contact' component={ Contact }></Route>
-				<Route path='/query' component={ Query } />
 			</Router>
 		)
 	}
