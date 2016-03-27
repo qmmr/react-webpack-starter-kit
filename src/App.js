@@ -9,6 +9,8 @@ const Links = () =>
 		<Link activeClassName='active' to='/me/name'>Me name</Link>
 		<Link activeClassName='active' to='/me/name/Marcin'>Me name is Marcin</Link>
 		<Link activeClassName='active' to='/contact'>Contact</Link>
+		<Link activeClassName='active' to='/query'>Query: default</Link>
+		<Link activeClassName='active' to={{ pathname: 'query', query: { query: 'Yo dude!' } }}>Query: "Yo dude!"</Link>
 	</nav>
 
 const About = (props) => <div><Links /><h1>About</h1>{ props.children }</div>
@@ -36,6 +38,12 @@ const CompositeContainer = (props) =>
 const CompositeHeader = () => <div><h1>CompositeHeader</h1></div>
 const CompositeBody = () => <div><p>CompositeBody</p></div>
 
+const Query = (props) =>
+	<div>
+		<Links />
+		<p>Query param is { props.location.query.query || 'default' }</p>
+	</div>
+
 export default class App extends Component {
 
 	static displayName = 'ReactWebpackStarterKit'
@@ -54,6 +62,7 @@ export default class App extends Component {
 				</Route>
 				<Route path='about' component={ About }></Route>
 				<Route path='/contact' component={ Contact }></Route>
+				<Route path='/query' component={ Query } />
 			</Router>
 		)
 	}
