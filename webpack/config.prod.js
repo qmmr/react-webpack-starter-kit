@@ -26,6 +26,11 @@ module.exports = {
 		]
 	},
 	plugins: [
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'main', // move deps to main file
+			children: true, // look for common deps in all children
+			minChunks: 2 // how many times dep must come up before being extracted
+		}),
 		new webpack.optimize.DedupePlugin(),
 		// removes a lot of debugging code in React
 		new webpack.DefinePlugin({
